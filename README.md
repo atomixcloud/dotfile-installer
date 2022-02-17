@@ -1,4 +1,4 @@
-# dotfile-installer
+# Dotfile-installer
 Dotfile installer
 
 **Installation**<br>
