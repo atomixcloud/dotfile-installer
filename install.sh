@@ -2,9 +2,9 @@
 
 set -e
 
-if [ "$GITHUB_ACCESSTOKEN" == "" ]; then
-	read -p "Enter GitHub access token: " GITHUB_ACCESSTOKEN
-fi
+#if [ "$GITHUB_ACCESSTOKEN" == "" ]; then
+#	read -p "Enter GitHub access token: " GITHUB_ACCESSTOKEN
+#fi
 
 BUILDPATH=$PREFIX/tmp
 HOST=https://$GITHUB_ACCESSTOKEN@github.com
