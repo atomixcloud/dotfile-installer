@@ -1,27 +1,21 @@
 #!/bin/bash
 
-set -e
+set -eux
 
-#if [ "$GITHUB_ACCESSTOKEN" == "" ]; then
-#	read -p "Enter GitHub access token: " GITHUB_ACCESSTOKEN
-#fi
+REPONAME=.aliases
+BUILDPATH=$HOME
+URL=git@github.com:atomixcloud/$REPONAME.git
 
-BUILDPATH=$PREFIX/tmp
-HOST=https://$GITHUB_ACCESSTOKEN@github.com
+if [ -d $REPONAME ]; then
+	mv $REPONAME $REPONAME.bkp
+fi
 
-#URL=$HOST/atomixcloud/rcupdate.git
-URL=git@github.com:atomixcloud/dotman.git
+cd $BUILDPATH
 
-NAME=$(basename $URL)
-TIME=$(date +"%Y%m%d%H%M%S")
-BRANCH=$BUILDPATH/$NAME.$TIME
+git clone $URL
 
-echo "Installing dotfiles ..."
-git clone $URL $BRANCH
-
-cd $BRANCH
-eval ./rcupdate.sh
+cd $REPONAME
+eval ./install.sh
 cd $OLDPWD
-rm -rf $BRANCH
 
 exit $?
