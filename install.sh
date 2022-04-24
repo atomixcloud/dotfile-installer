@@ -6,11 +6,11 @@ REPONAME=.aliases
 BUILDPATH=$HOME
 URL=git@github.com:atomixcloud/$REPONAME.git
 
+cd $BUILDPATH
+
 if [ -d $REPONAME ]; then
 	mv $REPONAME $REPONAME.bkp
 fi
-
-cd $BUILDPATH
 
 git clone $URL
 
